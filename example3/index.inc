@@ -47,15 +47,33 @@ selectedElement.setAttributeNS(null, "onmouseup", "deselectElement(evt)");
             }
  </script>
         <svg width="640" height="480">
-        <g transform="translate(0 0)">
-        <rect class="draggable"
-              x="30" y="30"
-              width="80" height="80"
-              fill="blue"
-              onmousedown="selectElement(evt)"/>
-       
-        <text x="0" y="10" fill="black" font-family="Verdana" font-size="24">Hello</text>
-        </g>
+            <defs>
+                <marker id="triangleFill" viewBox="0 0 8 8" refX="0" refY="4" markerWidth="32"
+                        markerHeight="24" orient="auto" markerUnits="strokeWidth">
+                    <path d="M 0 0 L 8 4 L 0 8 z"></path>
+                </marker>    
+                <marker id="triangleEmpty" viewBox="0 0 8 8" refX="0" refY="4" markerWidth="40"
+                        markerHeight="30" orient="auto">
+                    <path d="M 0 0 L 8 4 L 0 8 z" fill="transparent" stroke="black" stroke-width="0.5"></path>
+                </marker>
+                <marker id="triangleOpen" viewBox="0 0 8 8" refX="0" refY="4" markerWidth="40"
+                        markerHeight="30" orient="auto">
+                    <path d="M -4 0 L 0 4 L -4 8 " fill="transparent" stroke="black" stroke-width="0.5"></path>
+                </marker>
+            </defs>
+            <g transform="translate(0 0)">
+                <rect class="draggable"
+                    x="0" y="0"
+                    width="80" height="80"
+                    fill="blue"
+                    onmousedown="selectElement(evt)">
+                </rect>
+                <text x="0" y="20" fill="black" font-family="Verdana" font-size="24">Hello</text>
+            </g>
+        
+            <path d="M 100 100 L 200 100" marker-end="url(#triangleFill)" stroke="black"></path>
+            <path d="M 100 200 L 200 200" marker-end="url(#triangleEmpty)" stroke="black"></path>
+            <path d="M 100 300 L 200 300" marker-end="url(#triangleOpen)" stroke="black"></path>
         </svg
         
     </body>
